@@ -135,10 +135,10 @@ public class MovieResourceTest {
     @Test
     public void testFindByTitle() {
         given()
-                .get("/movie/title/{title}")
+                .get("/movie/title/Harry Potter and the Philosopher's Stone")
                 .then()
                 .assertThat()
-                .body("title", hasItems("Harry Potter and the Philosopher's Stone"));
+                .statusCode(HttpStatus.OK_200.getStatusCode());
     }
 
     @Test
