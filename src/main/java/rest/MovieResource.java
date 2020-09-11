@@ -3,14 +3,17 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dtos.MovieDTO;
+import entities.Movie;
 
 //Make sure NOT to have any references to your Entity Classes here
 //import entities.Movie;
 
 import facades.MovieFacade;
 import java.util.List;
+import javax.persistence.EntityManager;
 
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -45,12 +48,13 @@ public class MovieResource {
         return "{\"count\":"+count+"}";  //Done manually so no need for a DTO
     }
     
-
-    @Path("all")
+    @Path("/all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getAll() {
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        List<MovieDTO> movies = FACADE.getAllMovies();
+        return new Gson().toJson(movies);
     }
 
     @Path("/{id}")
