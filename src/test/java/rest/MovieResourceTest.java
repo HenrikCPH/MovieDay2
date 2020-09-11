@@ -143,13 +143,16 @@ public class MovieResourceTest {
 
     @Test
     public void testFindByTitleNotFound() {
-        //TODO
+        given()
+                .get("/movie/title/1")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.NOT_FOUND_404.getStatusCode());
     }
 
     @Test
     public void testFindById() {
-        //given().get("/movie/{id}", m2.getId())
-        //TODO
+        //m2.getId()      
 
     }
 }
