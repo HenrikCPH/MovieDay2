@@ -59,8 +59,9 @@ public class MovieResource {
     @Path("/{id}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getById(@PathParam("id") int id) {
-        throw new UnsupportedOperationException();
+    public MovieDTO getById(@PathParam("id") int id) {
+        return FACADE.getMovieById(id);
+        //throw new UnsupportedOperationException();
     }
 
     @Path("title/{title}")

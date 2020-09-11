@@ -152,7 +152,11 @@ public class MovieResourceTest {
 
     @Test
     public void testFindById() {
-        //m2.getId()      
-
+        given()
+                .contentType("application/json")
+                .get("/movie/title/Harry Potter and the Philosopher's Stone").then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("[0].id", equalTo(m1.getId().intValue()));
     }
 }
